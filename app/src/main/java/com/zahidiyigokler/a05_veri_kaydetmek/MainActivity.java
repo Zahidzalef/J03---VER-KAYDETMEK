@@ -1,17 +1,12 @@
 package com.zahidiyigokler.a05_veri_kaydetmek;
 
 import android.os.Bundle;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,25 +24,19 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.textView);
 
         sharedPreferences = this.getSharedPreferences("com.zahidiyigokler.A05VeriKaydetmek",Context.MODE_PRIVATE);
-
         int storedAge = sharedPreferences.getInt("storedAge",0);
-
         if (storedAge == 0) {
             textView.setText("Your age : ");
         } else {
             textView.setText("Your age : "+storedAge);
         }
-
-
     }
-
     public void save(View view) {
         if (!editText.getText().toString().matches("")) {
             int userAge = Integer.parseInt(editText.getText().toString());
             textView.setText("Your age : "+userAge);
         }
     }
-
     public void delete(View view) {
         int storedData = sharedPreferences.getInt("storedAge",0);
         if (storedData != 0) {
